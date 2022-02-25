@@ -5,6 +5,8 @@
     "lib": [
       "es2018"
     ],
+    "outDir": "./dist",
+    "declarationDir": "./dist/types",
     "declaration": true,
     "strict": true,
     "noImplicitAny": true,
@@ -17,14 +19,39 @@
     "noFallthroughCasesInSwitch": false,
     "inlineSourceMap": true,
     "inlineSources": true,
+    "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "strictPropertyInitialization": false,
+    "resolveJsonModule": true,
+    "strictFunctionTypes": true,
+    "keyofStringsOnly": true,
+    "skipLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "aws/*": [ "src/aws/*" ],
+      "database/*": [ "src/database/*" ],
+      "errors/*": [ "src/errors/*" ],
+      "lib/*": [ "lib/*" ],
+      "models/*": [ "src/database/models/*" ],
+      "stacks/*": [ "src/stacks/*" ],
+      "tests/*": [ "src/tests/*" ],
+      "utils/*": [ "src/utils/*" ],
+      "validation/*": [ "src/validation/*" ],
+      "NFTCollection/*": [ "src/stacks/NFTCollection" ]
+    },
     "typeRoots": [
       "./node_modules/@types"
-    ]
+    ],
+    "types": [ "node" ]
   },
+  "include": [
+    "lib",
+    "src"
+  ],
   "exclude": [
     "node_modules",
-    "cdk.out"
+    "cdk.out",
+    "build",
+    "dist"
   ]
 }
