@@ -8,20 +8,42 @@
     "build": "tsc",
     "watch": "tsc -w",
     "test": "jest",
-    "cdk": "cdk"
+    "cdk": "cdk",
+    "prepare": "webpack --config ./webpack.config.js && npm run-script build"
   },
   "devDependencies": {
+    "@types/chai": "^4.3.0",
     "@types/jest": "^26.0.10",
+    "@types/mocha": "^9.1.0",
     "@types/node": "10.17.27",
-    "jest": "^26.4.2",
-    "ts-jest": "^26.2.0",
+    "@types/node-fetch": "^2.6.1",
     "aws-cdk": "2.13.0",
+    "chai": "^4.3.6",
+    "dotenv": "^16.0.0",
+    "jest": "^26.4.2",
+    "mocha": "^9.2.1",
+    "node-fetch": "^3.2.0",
+    "ts-jest": "^26.2.0",
+    "ts-loader": "^9.2.6",
     "ts-node": "^9.0.0",
-    "typescript": "~3.9.7"
+    "tsconfig-paths": "^3.12.0",
+    "typescript": "~3.9.7",
+    "webpack": "^5.69.1",
+    "webpack-cli": "^4.9.2",
+    "webpack-node-externals": "^3.0.0"
   },
   "dependencies": {
+    "@aws/dynamodb-auto-marshaller": "^0.7.1",
+    "@aws/dynamodb-data-mapper": "^0.7.3",
+    "@aws/dynamodb-data-mapper-annotations": "^0.7.3",
+    "@aws/dynamodb-data-marshaller": "^0.7.3",
+    "@aws/dynamodb-expressions": "^0.7.3",
+    "ajv": "^6.12.6",
     "aws-cdk-lib": "2.13.0",
+    "aws-sdk": "^2.1082.0",
+    "body-parser": "^1.19.2",
     "constructs": "^10.0.0",
+    "fs": "^0.0.1-security",
     "source-map-support": "^0.5.16"
   }
 }
