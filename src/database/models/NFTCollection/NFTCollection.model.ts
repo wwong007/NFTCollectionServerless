@@ -31,7 +31,7 @@ export interface NFTCollectionI {
   feeSold: number | null;
   url: string;
   methodBought: MethodBought;
-  methodSold: MethodSold, 
+  methodSold: MethodSold | null, 
 };
 
 @table('NFTCollection')
@@ -74,5 +74,5 @@ export class NFTCollection implements NFTCollectionI {
   methodBought: MethodBought;
 
   @attribute()
-  methodSold: MethodSold;
+  methodSold: MethodSold | null;
 }
