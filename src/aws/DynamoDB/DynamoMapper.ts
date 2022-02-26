@@ -6,10 +6,16 @@ import { DataMapper, ScanOptions } from '@aws/dynamodb-data-mapper';
 import { ZeroArgumentsConstructor } from '@aws/dynamodb-data-marshaller';
 
 
-
 export const DynamoMapper = new DataMapper({
   client: new DynamoDBClient({ region: 'us-west-2' })
 });
+
+export const enum DynamoDBErrorType {
+  ACCESS_DENIED = 'AccessDeniedException',
+  CONDITIONAL_CHECK_FAILED = 'ConditionalCheckFailedException',
+  ITEM_NOT_FOUND = 'ItemNotFoundException',
+  TABLE_NOT_FOUND = 'ResourceNotFoundException'
+};
 
 export async function scan<T>(valueConstructor: ZeroArgumentsConstructor<T>, options?: ScanOptions): Promise<T[]> {
   const records: T[] = [];
