@@ -5,7 +5,7 @@ import {
 } from '@aws/dynamodb-data-mapper-annotations'
 
 export type MethodBought = 'mint' | 'secondary' | 'private' | 'trade';
-export type MethodSold = Omit<MethodBought, 'mint'>
+export type MethodSold = 'private' | 'secondary' | 'trade';
 export const MethodBoughtArray: MethodBought[] = [ 'mint', 'private', 'secondary', 'trade'];
 export const MethodSoldArray: MethodSold[] = [ 'private', 'secondary', 'trade' ];
 
