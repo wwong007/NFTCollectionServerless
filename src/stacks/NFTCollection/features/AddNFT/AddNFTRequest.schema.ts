@@ -1,10 +1,14 @@
+// CUSTOM TYPES
 import { MethodBought, MethodBoughtArray } from "database/models/NFTCollection/NFTCollection.model";
 import { SchemaMappedType, TopLevelSchema } from "validation/SchemaCheck";
+
+// VALIDATION FUNCTION
+import { validateInputWithSchema } from "validation/ValidateWithSchema";
 
 
 
 // INTERFACE
-export interface AddNFTI {
+export interface AddNFTRequestI {
   id: string;
   name: string;
   tokenId: number;
@@ -17,7 +21,7 @@ export interface AddNFTI {
 };
 
 // SCHEMA PROP TYPE
-type AddNFTSchemaProperties = SchemaMappedType<AddNFTI>;
+type AddNFTSchemaProperties = SchemaMappedType<AddNFTRequestI>;
 
 const properties: AddNFTSchemaProperties = {
   id: { type: 'string' },
@@ -40,3 +44,9 @@ const schema: AddNFTSchema = {
   properties,
   required: [ 'id', 'name', 'tokenId', 'priceBought', 'dateBought', 'feeBought', 'methodBought', 'url', 'isSold' ]
 };
+
+
+// VALIDATION
+export function validateAddNFTRequest (input: unknown): input is AddNFTRequestI {
+  return validateInputWithSchema(input, schema);
+}
