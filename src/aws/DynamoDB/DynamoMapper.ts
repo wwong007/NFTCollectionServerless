@@ -1,0 +1,24 @@
+// DYNAMO DB CLIENT
+import * as DynamoDBClient from 'aws-sdk/clients/dynamodb';
+
+// DYNAMODB DATA MAPPER
+import { DataMapper, ScanOptions } from '@aws/dynamodb-data-mapper';
+import { ZeroArgumentsConstructor } from '@aws/dynamodb-data-marshaller';
+
+
+
+export const DynamoMapper = new DataMapper({
+  client: new DynamoDBClient({ region: 'us-west-2' })
+});
+
+export async function scan<T>(valueConstructor: ZeroArgumentsConstructor<T>, options?: ScanOptions): Promise<T[]> {
+  const records: T[] = [];
+  try {
+    for await(const record of DynamoMapper.scan(valueConstructor, options)) {
+      records.push(record);
+    }
+    return records;
+  } catch (error) {
+    throw error
+  }
+}
