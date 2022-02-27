@@ -14,7 +14,8 @@ console.log('Adding logging');
 
 module.exports = {
   entry: {
-    GetNFTCollection: path.resolve(NFT_COLLECTION_PATH, 'features/GetNFTCollection/GetNFTCollection.ts')
+    GetNFTCollection: path.resolve(NFT_COLLECTION_PATH, 'features/GetNFTCollection/GetNFTCollection.ts'),
+    AddNFT: path.resolve(NFT_COLLECTION_PATH, 'features/AddNFT/AddNFT.ts')
   },
   output: {
     path: path.resolve(DIST_PATH),
