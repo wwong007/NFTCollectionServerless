@@ -28,3 +28,22 @@ export function validateInputArrayWithSchema<T, P> (input: unknown[], schema: To
   };
   return true;
 };
+
+function getInvalidKeys(validKeys: string[], inputKeys: string[]): string[] {
+  return inputKeys.filter(k => !validKeys.includes(k));
+};
+
+export function removeInvalidProperties<T extends object, P>(input: T, schema: TopLevelSchema<P>): T {
+  const inputKeys = Object.keys(input);
+  const validKeys = Object.keys(schema.properties);
+
+  const temp: any = Object.assign({}, input);
+
+  if (inputKeys.length > validKeys.length) {
+    const invalidKeys: string[] = getInvalidKeys(validKeys, inputKeys);
+    for (const key of invalidKeys) {
+      delete temp[key];
+    }
+  };
+  return temp
+}
