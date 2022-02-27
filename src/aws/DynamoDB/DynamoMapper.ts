@@ -2,7 +2,7 @@
 import * as DynamoDBClient from 'aws-sdk/clients/dynamodb';
 
 // DYNAMODB DATA MAPPER
-import { DataMapper, ScanOptions } from '@aws/dynamodb-data-mapper';
+import { DataMapper, PutOptions, ScanOptions } from '@aws/dynamodb-data-mapper';
 import { ZeroArgumentsConstructor } from '@aws/dynamodb-data-marshaller';
 
 
@@ -22,9 +22,17 @@ export async function scan<T>(valueConstructor: ZeroArgumentsConstructor<T>, opt
   try {
     for await(const record of DynamoMapper.scan(valueConstructor, options)) {
       records.push(record);
-    }
+    };
     return records;
   } catch (error) {
     throw error
-  }
-}
+  };
+};
+
+export function putItem<T>(item: T, options?: PutOptions): Promise<T> {
+  try {
+    return DynamoMapper.put(item, options);
+  } catch (error) {
+    throw error;
+  };
+};
