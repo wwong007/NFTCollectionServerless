@@ -1,5 +1,10 @@
+// CUSTOM TYPE
 import { MethodSold } from "database/models/NFTCollection/NFTCollection.model";
+
+// REQUEST VALIDATION CLASS
 import { RequestWithValidation } from "validation/RequestWithValidation";
+
+// UPDATE NFT REQUEST VALIDATIONS
 import { UpdateNFTRequestI, validateUpdateNFTRequest } from "./UpdateNFTRequest.schema";
 
 
