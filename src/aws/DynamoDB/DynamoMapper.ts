@@ -42,7 +42,7 @@ export function executeUpdateExpression<T> (
   updateExpression: UpdateExpression,
   key: { [propertyName: string]: string | number | boolean },
   valueConstructor: ZeroArgumentsConstructor<T>,
-  updateOptions: ExecuteUpdateExpressionOptions
+  updateOptions?: ExecuteUpdateExpressionOptions
 ): Promise<T> {
   try {
     return DynamoMapper.executeUpdateExpression(updateExpression, key, valueConstructor, updateOptions);
