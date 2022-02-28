@@ -2,8 +2,9 @@
 import * as DynamoDBClient from 'aws-sdk/clients/dynamodb';
 
 // DYNAMODB DATA MAPPER
-import { DataMapper, PutOptions, ScanOptions } from '@aws/dynamodb-data-mapper';
+import { DataMapper, ExecuteUpdateExpressionOptions, PutOptions, ScanOptions } from '@aws/dynamodb-data-mapper';
 import { ZeroArgumentsConstructor } from '@aws/dynamodb-data-marshaller';
+import { UpdateExpression } from '@aws/dynamodb-expressions';
 
 
 export const DynamoMapper = new DataMapper({
@@ -36,3 +37,17 @@ export function putItem<T>(item: T, options?: PutOptions): Promise<T> {
     throw error;
   };
 };
+
+export function executeUpdateExpression<T> (
+  updateExpression: UpdateExpression,
+  key: { [propertyName: string]: string | number | boolean },
+  valueConstructor: ZeroArgumentsConstructor<T>,
+  updateOptions?: ExecuteUpdateExpressionOptions
+): Promise<T> {
+  try {
+    return DynamoMapper.executeUpdateExpression(updateExpression, key, valueConstructor, updateOptions);
+  } catch (error) {
+    throw error;
+  };
+};
+
