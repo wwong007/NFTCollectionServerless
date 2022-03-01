@@ -34,7 +34,7 @@ export class AddNFTLambda extends LambdaFunction {
       },
       initialPolicy: [
         new iam.PolicyStatement({
-          actions: ['dynamodb.PutItem'],
+          actions: ['dynamodb:PutItem'],
           effect: iam.Effect.ALLOW,
           resources: [
             `arn:aws:dynamodb:${scope.region}:${scope.account}:table/NFTCollection`
