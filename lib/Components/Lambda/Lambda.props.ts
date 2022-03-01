@@ -7,7 +7,7 @@ import * as logs from 'aws-cdk-lib/aws-logs';
 const DEFAULT_MEMORY_SIZE: number = 512;
 const DEFAULT_TIMEOUT: number = 5;
 
-export const COMMON_LAMBDA_PROPS: Partial<lambda.FunctionProps> = {
+export const COMMON_LAMBDA_OPTIONS: lambda.FunctionOptions = {
   environment: {
     AWS_NODEJS_CONNECTION_REUSE_ENABLED: "1"
   },
