@@ -3,6 +3,7 @@ import * as Ajv from 'ajv';
 
 // SCHEMA CLASS
 import { TopLevelSchema } from './SchemaCheck';
+import { ValidationError } from 'errors/ValidationError';
 
 
 
@@ -13,7 +14,7 @@ export function validateInputWithSchema<T, P> (input: unknown, schema: TopLevelS
     const validateFunction: Ajv.ValidateFunction = ajv.compile(schema);
     const isValid = validateFunction(input);
     if (!isValid && validateFunction.errors) {
-      throw new Ajv.ValidationError(validateFunction.errors);
+      throw new ValidationError(validateFunction.errors);
     };
     return true;
   } catch (error) {
