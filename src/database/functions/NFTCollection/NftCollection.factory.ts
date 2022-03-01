@@ -18,7 +18,7 @@ export function nftCollectionFactoryFromCompleteProps(props: NFTCollectionI): NF
 };
 
 export function nftCollectionFactoryFromAddNFTRequest(request: AddNFTRequest): NFTCollection {
-  const { id, name, tokenId, priceBought, dateBought, feeBought, methodBought, url, isSold } = request;
+  const { id, name, tokenId, priceBought, dateBought, feeBought, methodBought, url } = request;
   const props: NFTCollectionI = {
     id,
     name,
@@ -29,7 +29,7 @@ export function nftCollectionFactoryFromAddNFTRequest(request: AddNFTRequest): N
     dateSold : null,
     feeBought,
     feeSold: null,
-    isSold,
+    isSold: false,
     url,
     methodBought,
     methodSold: null

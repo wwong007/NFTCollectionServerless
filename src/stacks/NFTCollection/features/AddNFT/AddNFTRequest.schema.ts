@@ -17,7 +17,6 @@ export interface AddNFTRequestI {
   feeBought: number;
   url: string;
   methodBought: MethodBought;
-  isSold: boolean;
 };
 
 // SCHEMA PROP TYPE
@@ -31,8 +30,7 @@ const properties: AddNFTSchemaProperties = {
   dateBought: { type: 'number' },
   feeBought: { type: 'number' },
   url: { type: 'string' },
-  methodBought: { type: 'string', enum: MethodBoughtArray },
-  isSold: { type: 'boolean' }
+  methodBought: { type: 'string', enum: MethodBoughtArray }
 };
 
 // SCHEMA TYPE
@@ -42,7 +40,7 @@ const schema: AddNFTSchema = {
   '$id': 'AddNFTRequestSchema',
   type: 'object',
   properties,
-  required: [ 'id', 'name', 'tokenId', 'priceBought', 'dateBought', 'feeBought', 'methodBought', 'url', 'isSold' ]
+  required: [ 'id', 'name', 'tokenId', 'priceBought', 'dateBought', 'feeBought', 'methodBought', 'url' ]
 };
 
 

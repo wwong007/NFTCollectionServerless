@@ -17,7 +17,6 @@ export class AddNFTRequest extends RequestWithValidation {
   readonly feeBought: number;
   readonly methodBought: MethodBought;
   readonly url: string;
-  readonly isSold: boolean;
 
   constructor(input: AddNFTRequestI) {
     super(input, validateAddNFTRequest);
@@ -30,6 +29,5 @@ export class AddNFTRequest extends RequestWithValidation {
     this.feeBought = input.feeBought;
     this.methodBought = input.methodBought;
     this.url = input.url;
-    this.isSold = input.isSold;
   };
 };
