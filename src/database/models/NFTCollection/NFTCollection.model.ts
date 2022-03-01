@@ -5,9 +5,9 @@ import {
 } from '@aws/dynamodb-data-mapper-annotations'
 
 export type MethodBought = 'mint' | 'secondary' | 'private' | 'trade';
-export type MethodSold = 'private' | 'secondary' | 'trade';
+export type MethodSold = 'private' | 'secondary' | 'trade' | 'N/A';
 export const MethodBoughtArray: MethodBought[] = [ 'mint', 'private', 'secondary', 'trade'];
-export const MethodSoldArray: MethodSold[] = [ 'private', 'secondary', 'trade' ];
+export const MethodSoldArray: MethodSold[] = [ 'private', 'secondary', 'trade', 'N/A' ];
 
 export enum MethodsType {
   MINT = 'mint',
@@ -31,7 +31,7 @@ export interface NFTCollectionI {
   feeSold: number | null;
   url: string;
   methodBought: MethodBought;
-  methodSold: MethodSold | null, 
+  methodSold: MethodSold, 
 };
 
 @table('NFTCollection')
@@ -74,5 +74,5 @@ export class NFTCollection implements NFTCollectionI {
   methodBought: MethodBought;
 
   @attribute()
-  methodSold: MethodSold | null;
+  methodSold: MethodSold;
 }

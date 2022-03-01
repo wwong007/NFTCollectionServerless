@@ -1,4 +1,7 @@
+// CUSTOM SCHEMA TYPE
 import { SchemaMappedType, TopLevelSchema } from "validation/SchemaCheck";
+
+// CUSTOM TYPES
 import { MethodBoughtArray, MethodSoldArray, NFTCollectionI } from "./NFTCollection.model";
 
 
@@ -11,12 +14,12 @@ export const nftCollectionProperties: NFTCollectionProperties = {
   name: { type: 'string' },
   tokenId: { type: 'number' },
   priceBought: { type: 'number' },
-  priceSold: { type: 'number' },
+  priceSold: { type: ['number', 'null'] },
   dateBought: { type: 'number' },
-  dateSold: { type: 'number' },
+  dateSold: { type: ['number', 'null'] },
   isSold: { type: 'boolean' },
   feeBought: { type: 'number' },
-  feeSold: { type: 'number' },
+  feeSold: { type: ['number', 'null'] },
   url: { type: 'string' },
   methodBought: { type: 'string', enum: MethodBoughtArray },
   methodSold: { type: 'string', enum: MethodSoldArray }

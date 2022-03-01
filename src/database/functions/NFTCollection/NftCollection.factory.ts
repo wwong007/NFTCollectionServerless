@@ -32,7 +32,7 @@ export function nftCollectionFactoryFromAddNFTRequest(request: AddNFTRequest): N
     isSold: false,
     url,
     methodBought,
-    methodSold: null
+    methodSold: 'N/A'
   };
 
   return nftCollectionFactoryFromCompleteProps(props);
