@@ -1,8 +1,6 @@
-// AJV ERROR TYPE
-import { ValidationError } from "ajv";
-
 // CUSTOM ERROR CLASS/TYPE
 import { ServiceError, ServiceErrorType } from "errors/ServiceError";
+import { ValidationError } from "errors/ValidationError";
 
 
 
