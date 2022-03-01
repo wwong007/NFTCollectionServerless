@@ -1,70 +1,97 @@
-import { ApiKeySourceType, 
-  AuthorizationType, 
-  IntegrationProps, 
-  IntegrationResponse, 
-  IntegrationType, 
+import { ApiKey, 
+  ApiKeyProps, 
+  Deployment, 
+  DeploymentProps, 
+  Method, 
   MethodProps, 
-  MethodResponse, 
-  RestApiProps 
+  Model, 
+  ModelProps, 
+  Resource, 
+  ResourceProps, 
+  RestApi, 
+  RestApiProps, 
+  UsagePlan, 
+  UsagePlanProps 
 } from "aws-cdk-lib/aws-apigateway";
+import { Construct } from "constructs";
 
-const ERROR_MAPPING_RESPONSE_TEMPLATE = "$input.path('$.errorMessage');";
 
-export const COMMON_REST_API_PROPS: RestApiProps = {
-  apiKeySourceType: ApiKeySourceType.HEADER
+
+export class ApiGateway extends RestApi {
+  constructor(scope: Construct, apiProps: RestApiProps) {
+    super(
+      scope,
+      `${apiProps.restApiName}`,
+      apiProps
+    );
+  };
 };
 
-export const COMMON_API_METHOD_PROPS: Partial<MethodProps> = {
-  options: {
-    apiKeyRequired: true,
-    authorizationType: AuthorizationType.NONE
-  }
+export class ApiResource extends Resource {
+  constructor(scope: Construct, resourceProps: ResourceProps) {
+    super(
+      scope,
+      `${resourceProps.pathPart}-resource`,
+      resourceProps
+    );
+  };
 };
 
 
-export const COMMON_INTEGRATION_PROPS: IntegrationProps = {
-  type: IntegrationType.AWS,
-  integrationHttpMethod: 'POST'
+export class ApiDeployment extends Deployment {
+  constructor(scope: Construct, deploymentProps: DeploymentProps) {
+    super(
+      scope,
+      `${deploymentProps.description}-deployment`,
+      deploymentProps
+    );
+  };
 };
 
-export const COMMON_INTEGRATION_RESPONSES: IntegrationResponse[] = [
-  {
-    statusCode: '200'
-  },
-  {
-    statusCode: '400',
-    selectionPattern: '.*BadRequest.*',
-    responseTemplates: {
-      'application/json': ERROR_MAPPING_RESPONSE_TEMPLATE
-    }
-  },
-  {
-    statusCode: '404',
-    selectionPattern: '.*NotFound.*',
-    responseTemplates: {
-      'application/json': ERROR_MAPPING_RESPONSE_TEMPLATE
-    }
-  },
-  {
-    statusCode: '409',
-    selectionPattern: '.*Conflict.*',
-    responseTemplates: {
-      'application/json': ERROR_MAPPING_RESPONSE_TEMPLATE
-    }
-  },
-  {
-    statusCode: '500',
-    selectionPattern: '.*InternalServerError.*',
-    responseTemplates: {
-      'application/json': ERROR_MAPPING_RESPONSE_TEMPLATE
-    }
-  }
-];
+export class ApiMethod extends Method {
+  constructor(scope: Construct, methodProps: MethodProps) {
+    if (methodProps.options?.operationName) {
+      super(
+        scope,
+        `${methodProps.options.operationName}-method`,
+        methodProps
+      );
+    } else {
+      super(
+        scope,
+        `${methodProps.resource.path}-${methodProps.httpMethod}-method`,
+        methodProps
+      );
+    };
+  };
+};
 
-export const COMMON_METHOD_RESPONSES: MethodResponse[] = [
-  { statusCode: '200' },
-  { statusCode: '400' },
-  { statusCode: '404' },
-  { statusCode: '409' },
-  { statusCode: '500' },
-];
+export class ApiKeyConstruct extends ApiKey {
+  constructor(scope: Construct, apiKeyProps: ApiKeyProps) {
+    super(
+      scope,
+      `${apiKeyProps.apiKeyName}`,
+      apiKeyProps
+    );
+  };
+};
+
+export class ApiUsagePlan extends UsagePlan {
+  constructor(scope: Construct, usagePlanProps: UsagePlanProps) {
+    super(
+      scope,
+      `${usagePlanProps.name}`,
+      usagePlanProps
+    );
+  };
+};
+
+export class ApiModel extends Model {
+  constructor(scope: Construct, modelProps: ModelProps) {
+    super(
+      scope,
+      `${modelProps.modelName}`,
+      modelProps
+    );
+  };
+};
