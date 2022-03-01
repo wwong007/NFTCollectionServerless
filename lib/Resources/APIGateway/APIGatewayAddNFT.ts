@@ -86,7 +86,7 @@ export class AddNFTApiMethod extends ApiMethod {
   };
 };
 
-export class AddNFTApiMode extends ApiModel {
+export class AddNFTApiModel extends ApiModel {
   constructor(scope: Construct, restApi: IRestApi) {
     const COMPLETE_MODEL_PROPS: ModelProps = {
       restApi,
