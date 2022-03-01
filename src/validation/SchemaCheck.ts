@@ -1,7 +1,7 @@
-type TypeName = 'string' | 'number' | 'boolean' | 'object' | 'array' | 'any';
+type TypeName = 'string' | 'number' | 'boolean' | 'object' | 'array' | 'any' | 'null';
 
 export interface SchemaValueI {
-  type: TypeName;
+  type: TypeName | TypeName[];
   items?: object;
   properties?: object;
   minimum?: number;
