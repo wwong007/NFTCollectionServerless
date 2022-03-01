@@ -17,7 +17,7 @@ import { COMMON_LAMBDA_OPTIONS } from '../../Components/Lambda/Lambda.props';
 
 
 // CONSTANTS
-const DIST_PATH = path.join(__dirname, '../../build/commonjs/dist');
+const DIST_PATH = path.join(__dirname, '../../../build/commonjs/dist');
 const FUNCTION_NAME:string = 'UpdateNFT';
 
 
