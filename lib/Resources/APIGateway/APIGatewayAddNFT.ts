@@ -23,7 +23,7 @@ import {
   ApiMethod, 
   ApiModel, 
   ApiResource 
-} from "lib/Components/APIGateway/APIGateway.models";
+} from "../../Components/APIGateway/APIGateway.models";
 
 // COMMON PROPS
 import { 
@@ -31,7 +31,7 @@ import {
   COMMON_INTEGRATION_PROPS, 
   COMMON_INTEGRATION_RESPONSES, 
   COMMON_METHOD_RESPONSES 
-} from "lib/Components/APIGateway/APIGateway.props";
+} from "../../Components/APIGateway/APIGateway.props";
 
 
 

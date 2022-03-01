@@ -1,7 +1,7 @@
 // AWS CDK
-import * as cdk from 'aws-cdk-lib/core';
 import * as lambda from 'aws-cdk-lib/aws-lambda';
 import * as logs from 'aws-cdk-lib/aws-logs';
+import { Duration } from 'aws-cdk-lib';
 
 // CONSTANTS
 const DEFAULT_MEMORY_SIZE: number = 512;
@@ -13,6 +13,6 @@ export const COMMON_LAMBDA_OPTIONS: lambda.FunctionOptions = {
   },
   logRetention: logs.RetentionDays.ONE_YEAR,
   memorySize: DEFAULT_MEMORY_SIZE,
-  timeout: cdk.Duration.seconds(DEFAULT_TIMEOUT),
+  timeout: Duration.seconds(DEFAULT_TIMEOUT),
   tracing: lambda.Tracing.ACTIVE
 };

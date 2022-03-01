@@ -9,10 +9,10 @@ import * as lambda from 'aws-cdk-lib/aws-lambda';
 import { ConstructWithAppScope } from 'lib/nft_collection_serverless-stack';
 
 // COMPONENT
-import { LambdaFunction } from 'lib/Components/Lambda/Lambda.models';
+import { LambdaFunction } from '../../Components/Lambda/Lambda.models';
 
 // COMMON PROPS
-import { COMMON_LAMBDA_OPTIONS } from 'lib/Components/Lambda/Lambda.props';
+import { COMMON_LAMBDA_OPTIONS } from '../../Components/Lambda/Lambda.props';
 
 
 // CONSTANTS
